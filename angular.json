@@ -3,5 +3,126 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "advanced-template-techniques": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/advanced-template-techniques",
+      "sourceRoot": "projects/advanced-template-techniques/src",
+      "prefix": "yl",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/advanced-template-techniques",
+            "index": "projects/advanced-template-techniques/src/index.html",
+            "main": "projects/advanced-template-techniques/src/main.ts",
+            "polyfills": "projects/advanced-template-techniques/src/polyfills.ts",
+            "tsConfig": "projects/advanced-template-techniques/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/advanced-template-techniques/src/favicon.ico",
+              "projects/advanced-template-techniques/src/assets"
+            ],
+            "styles": [
+              "projects/advanced-template-techniques/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/advanced-template-techniques/src/environments/environment.ts",
+                  "with": "projects/advanced-template-techniques/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "advanced-template-techniques:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "advanced-template-techniques:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "advanced-template-techniques:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/advanced-template-techniques/src/test.ts",
+            "polyfills": "projects/advanced-template-techniques/src/polyfills.ts",
+            "tsConfig": "projects/advanced-template-techniques/tsconfig.spec.json",
+            "karmaConfig": "projects/advanced-template-techniques/karma.conf.js",
+            "assets": [
+              "projects/advanced-template-techniques/src/favicon.ico",
+              "projects/advanced-template-techniques/src/assets"
+            ],
+            "styles": [
+              "projects/advanced-template-techniques/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/advanced-template-techniques/tsconfig.app.json",
+              "projects/advanced-template-techniques/tsconfig.spec.json",
+              "projects/advanced-template-techniques/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/advanced-template-techniques/e2e/protractor.conf.js",
+            "devServerTarget": "advanced-template-techniques:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "advanced-template-techniques:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "advanced-template-techniques"
 }
