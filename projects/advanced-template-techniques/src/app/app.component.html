@@ -1,20 +1,24 @@
 <h1>Embedded views in Angular</h1>
-<!--<h2 [ngClass]="{}"></h2>-->
-<ng-container [ylTemplateRender]="templateRef"></ng-container>
+<hr>
+<ng-container #container></ng-container>
 
-<!--Tag in JS-->
-<!--<template>-->
-<!--  <h3>This content will not render!</h3>-->
-<!--</template>-->
+<!--Pass context - with some variables  into template-->
 
-<ng-template #templateRef>
-  <h3>This content will render only with ViewContainerRef!</h3>
+<ng-template #userTemplate let-user="user">
+  <h2>This content render with ViewContainerRef</h2>
+  <h3>Username: {{user.name}}</h3>
+  <hr>
 </ng-template>
 
-<ng-container *ngTemplateOutlet="template"></ng-container>
 
-<ng-template #template>
-  <h4>This content will render with ngTemplateOutlet</h4>
+<!--Pass context - with some variables  into template-->
+<ng-template #userTemplate2 let-user="user" let-index="index" let-firstUser="firstUser" let-lastUser="lastUser">
+  <h2>This content render with ViewContainerRef</h2>
+  <h3>Username: {{user.name}}</h3>
+  <div>{{index}}</div>
+  <div>First: {{firstUser}}</div>
+  <div>Last: {{lastUser}}</div>
+  <hr>
 </ng-template>
 
 
