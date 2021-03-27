@@ -1,1 +1,10 @@
 <h2>child works!</h2>
+<yl-grid [headers]="headers" [data]="users">
+  <ng-template let-data="$implicit">
+    <tr>
+      <td>{{data.id}}</td>
+      <td>{{data.name}}</td>
+      <td>{{data.age}}</td>
+    </tr>
+  </ng-template>
+</yl-grid>

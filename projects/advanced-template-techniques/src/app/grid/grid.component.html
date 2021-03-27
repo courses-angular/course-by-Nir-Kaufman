@@ -1,0 +1,14 @@
+<table>
+  <thead>
+  <tr>
+    <th *ngFor="let header of headers">{{header}}</th>
+  </tr>
+  </thead>
+  <tbody>
+<ng-container *ngFor="let entry of data;template: rowTemplate || noTemplate"></ng-container>
+  </tbody>
+</table>
+
+<ng-template #noTemplate>
+  <tr>No row template</tr>
+</ng-template>
