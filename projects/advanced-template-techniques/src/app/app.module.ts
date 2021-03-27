@@ -3,11 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { ChildComponent } from './child/child.component';
+import { TemplateRenderDirective } from './directives/template-render.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChildComponent
+    ChildComponent,
+    TemplateRenderDirective
   ],
   imports: [
     BrowserModule
