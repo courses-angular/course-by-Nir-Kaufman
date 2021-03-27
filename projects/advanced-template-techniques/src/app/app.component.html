@@ -1,1 +1,14 @@
 <h1>Embedded views in Angular</h1>
+<!--<h2 [ngClass]="{}"></h2>-->
+<ng-container #containerRef></ng-container>
+
+<!--Tag in JS-->
+<!--<template>-->
+<!--  <h3>This content will not render!</h3>-->
+<!--</template>-->
+
+<ng-template #templateRef>
+  <h3>This content will render only with ViewContainerRef!</h3>
+</ng-template>
+
+
