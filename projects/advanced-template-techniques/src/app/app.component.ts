@@ -5,6 +5,7 @@ import {
   ElementRef,
   EmbeddedViewRef,
   Inject,
+  OnInit,
   Optional,
   Renderer2,
   SkipSelf,
@@ -22,50 +23,10 @@ import { users } from './data/users.interface';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements AfterViewInit {
-  title = 'advanced-template-techniques';
-  @ViewChild('container', { read: ViewContainerRef })
-  containerRef: ViewContainerRef;
-
-  /**
-   * TemplateRef<any> - context
-   */
-  @ViewChild('userTemplate', { read: TemplateRef })
-  userTemplateRef: TemplateRef<{ user: UserInterface }>;
-
-  @ViewChild('userTemplate2', { read: TemplateRef })
-  userTemplateRef2: TemplateRef<{
-    user: UserInterface;
-    index: number;
-    firstUser: boolean;
-    lastUser: boolean;
-  }>;
-
-  users: UserInterface[] = users;
-  username: string = '';
+export class AppComponent implements AfterViewInit, OnInit {
   constructor() {}
 
-  ngAfterViewInit(): void {
-    this.users.forEach((user) => {
-      this.containerRef.createEmbeddedView(this.userTemplateRef, { user });
-    });
-    for (let i = 0; i < this.users.length; i++) {
-      const currentUser = this.users[i];
-      const index = i;
-      this.containerRef.createEmbeddedView(this.userTemplateRef2, {
-        user: currentUser,
-        index,
-        firstUser: i === 0,
-        lastUser: i === this.users.length - 1,
-      });
-    }
-  }
+  ngOnInit(): void {}
 
-  onChange(event: any): void {
-    console.log(event);
-  }
-
-  onClick(event: any) {
-    console.log('Clicked', event);
-  }
+  ngAfterViewInit(): void {}
 }
