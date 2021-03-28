@@ -14,14 +14,26 @@
 <!--Pass context - with some variables  into template-->
 <ng-template #userTemplate2 let-user="user" let-index="index" let-firstUser="firstUser" let-lastUser="lastUser">
   <h2>This content render with ViewContainerRef</h2>
-  <h3>Username: {{user.name}}</h3>
+  <h3>Username: {{user?.name}}</h3>
   <div>{{index}}</div>
   <div>First: {{firstUser}}</div>
   <div>Last: {{lastUser}}</div>
   <hr>
 </ng-template>
 
-
 <app-child></app-child>
+<hr>
+
+<yl-universal [data]="username"  (onChange)="onChange($event)">
+  <ng-template>
+    <input type="text" placeholder="Username" [(ngModel)]="username" >
+  </ng-template>
+</yl-universal>
+
+<yl-universal [data]="username"  (onChange)="onChange($event)" (onClick)="onClick($event)">
+  <ng-template>
+    <button>Click</button>
+  </ng-template>
+</yl-universal>
 
 

@@ -42,6 +42,7 @@ export class AppComponent implements AfterViewInit {
   }>;
 
   users: UserInterface[] = users;
+  username: string = '';
   constructor() {}
 
   ngAfterViewInit(): void {
@@ -58,5 +59,13 @@ export class AppComponent implements AfterViewInit {
         lastUser: i === this.users.length - 1,
       });
     }
+  }
+
+  onChange(event: any): void {
+    console.log(event);
+  }
+
+  onClick(event: any) {
+    console.log('Clicked', event);
   }
 }
